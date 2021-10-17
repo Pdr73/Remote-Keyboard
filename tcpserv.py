@@ -4,6 +4,10 @@ from pynput.keyboard import Key, Controller
 
 keyboard = Controller()
 
+def say(key):
+	keyboard.press(key)
+	keyboard.release(key)
+
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('localhost', 50000))
 s.listen(1)
@@ -30,15 +34,19 @@ while exit == 0:
 		key = Key.space
 	
 	else:						# Simplemente añade una letra 
-		key = data
+		key = tdata				# La letra en cuestion
 		tdata.append(data)
 
 	print '\r',
 	print "[+] " + "".join(tdata),
+
+	say(key)
+
 	sys.stdout.flush()
 
 	if data == '/e':
 		exit = 1
+		
 conn.close()
 s.close()
 print("\n[-] Connection ended.")
