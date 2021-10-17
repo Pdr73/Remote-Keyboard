@@ -1,2 +1,2 @@
 # Remote-Keyboard
-Use of an Android device as a remote keyboard for PC
+Use a windows device as a remote keyboard for PC
