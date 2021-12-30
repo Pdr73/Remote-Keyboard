@@ -10,3 +10,5 @@ Usage:
 
 Librarys needed:
  - pynput (pip install pynput)
+
+Python version: 2.7.15
