@@ -17,7 +17,7 @@ s.bind((ip, 50000))
 s.listen(1)
 conn, addr = s.accept()
 print("[+] Connected to {}! Program is ready to send keys!".format(addr))
-
+	
 exit = 0
 tdata=[]
 
