@@ -7,3 +7,6 @@ Usage:
 - On the pc that is going to be controlled open tcpserv.py.
 - On the one that is listening for the keys open tcpclnt.py and write the ip provided by the tcpserv.py program.
 - This works for pcs on the same wifi network.
+
+Librarys needed:
+ - pynput (pip install pynput)
