@@ -24,6 +24,7 @@ tdata=[]
 while exit == 0:
 	data = conn.recv(1024)		# Recieve the data
 	data = data.decode('ascii')	# Decode
+	print(data)
 
 	if data.startswith('press'):
 		keybd.press(dicsionario[data.split('press')[1]])
@@ -32,8 +33,9 @@ while exit == 0:
 		keybd.release(dicsionario[data.split('release')[1]])
 
 	if data == '/e':
+		keybd.release(dicsionario[data.split('press')[1]])
 		exit = 1
 
 conn.close()
 s.close()
-print("\n[-] Connection ended.")
+print("\n[-] Connection ended.")  
