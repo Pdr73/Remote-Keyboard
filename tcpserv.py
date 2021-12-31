@@ -17,7 +17,20 @@ s.bind((ip, 50000))
 s.listen(1)
 conn, addr = s.accept()
 print("[+] Connected to {}! Program is ready to send keys!".format(addr))
-	
+
+
+def funcionrec(keyspressed):
+	keypressed = keyspressed[0]
+
+	if len(keyspressed) > 2:
+		with keybd.pressed(keypressed):
+			funcionrec(keyspressed[1:len(keyspressed)])
+	elif len(keyspressed) == 2:
+		with keybd.pressed(keypressed):
+			keybd.press(keyspressed[-1])
+			keybd.release(keyspressed[-1])
+
+
 exit = 0
 tdata=[]
 
@@ -26,14 +39,21 @@ while exit == 0:
 	data = data.decode('ascii')	# Decode
 	print(data)
 
-	if data.startswith('press'):
-		keybd.press(dicsionario[data.split('press')[1]])
+	if data.startswith('press.'):
+		keybd.press(dicsionario[data.split('press.')[1]])
 
-	elif data.startswith('release'):
-		keybd.release(dicsionario[data.split('release')[1]])
+	elif data.startswith('release.'):
+		keybd.release(dicsionario[data.split('release.')[1]])
+
+	elif data.startswith('pressed.'):
+		keyspressed = data.split('pressed.')[1].split('.pressedwith.')
+		for i in range(len(keyspressed)):
+			keyspressed[i] = dicsionario[keyspressed[i]]
+
+		funcionrec(keyspressed)
 
 	if data == '/e':
-		keybd.release(dicsionario[data.split('press')[1]])
+		keybd.release(dicsionario[data.split('press.')[1]])
 		exit = 1
 
 conn.close()
