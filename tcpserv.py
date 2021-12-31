@@ -9,7 +9,7 @@ keybd = Controller()
 pcname = socket.gethostname()
 ip = socket.gethostbyname(pcname)
 
-print("This is the IP you have to share: {}?".format(ip))
+print("This is the IP you have to share: {}".format(ip))
 
 print("[*] Creating connection...")
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
