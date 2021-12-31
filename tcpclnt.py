@@ -1,5 +1,5 @@
 # CLIENT
-import socket, msvcrt, sys
+import socket, sys
 from pynput.keyboard import Key, Controller
 from pynput import keyboard
 
